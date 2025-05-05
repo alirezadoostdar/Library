@@ -8,4 +8,5 @@ public interface ICategoryRepository
     void Update(Category category);
     void Delete(int id);
     Category GetById(int id);
+    IEnumerable<Category> GetAll();
 }
