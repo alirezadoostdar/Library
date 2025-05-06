@@ -15,11 +15,15 @@ public class CategoryController
 
     public void Create(CreateCategoryDto category)
     {
-        var cat = new Category()
+        if (! _repository.IsDupplicat(category.Title))
         {
-            Id = 0,
-            Title = category.Title,
-        };
-        _repository.Add(cat);
+            var cat = new Category()
+            {
+                Id = 0,
+                Title = category.Title,
+            };
+            _repository.Add(cat);
+        }
+
     }
 }

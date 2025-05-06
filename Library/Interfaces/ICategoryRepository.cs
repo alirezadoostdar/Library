@@ -9,4 +9,5 @@ public interface ICategoryRepository
     void Delete(int id);
     Category GetById(int id);
     IEnumerable<Category> GetAll();
+    bool IsDupplicat(string title);
 }

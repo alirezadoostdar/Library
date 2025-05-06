@@ -36,6 +36,11 @@ public class EfCategoryRepository : ICategoryRepository
         throw new NotImplementedException();
     }
 
+    public bool IsDupplicat(string title)
+    {
+        return _context.Categories.Any(c => c.Title == title);
+    }
+
     public void Update(Category category)
     {
         throw new NotImplementedException();
