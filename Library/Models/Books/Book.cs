@@ -1,4 +1,6 @@
-﻿namespace Library.Models;
+﻿using Library.Models.Categories;
+
+namespace Library.Models.Books;
 
 public class Book
 {
@@ -7,5 +9,6 @@ public class Book
     public string Author { get; set; }
     public string Code { get; set; }
     public int CategoryId { get; set; }
+    public Category Category { get; set; }
 }
 

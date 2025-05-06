@@ -1,6 +1,7 @@
 ﻿
 using Library.Interfaces;
 using Library.Models;
+using Library.Models.Books;
 
 namespace Library.Repositories;
 

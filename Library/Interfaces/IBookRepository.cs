@@ -1,4 +1,4 @@
-﻿using Library.Models;
+﻿using Library.Models.Books;
 
 namespace Library.Interfaces;
 
