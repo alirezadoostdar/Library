@@ -28,7 +28,7 @@ public class EfCategoryRepository : ICategoryRepository
 
     public IEnumerable<Category> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Categories;
     }
 
     public Category GetById(int id)

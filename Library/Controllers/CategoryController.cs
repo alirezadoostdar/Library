@@ -26,4 +26,9 @@ public class CategoryController
         }
 
     }
+
+    public List<Category> GetAll()
+    {
+        return _repository.GetAll().ToList();
+    }
 }

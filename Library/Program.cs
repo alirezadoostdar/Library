@@ -21,12 +21,14 @@ public class program
 
         var categoryController = serviceCollection.GetRequiredService<CategoryController>();
 
-        var menu = "1)Add Category";
+        var menu = "1)Add Category 2)Category List";
 
         for (; ; )
         {
             Console.WriteLine(menu);
             var item = Console.ReadLine();
+            Console.Clear();
+
             switch (item)
             {
                 case "1":
@@ -38,6 +40,15 @@ public class program
                             Title = title
                         };
                         categoryController.Create(catDto);
+                        break;
+                    }
+                case "2":
+                    {
+                        var catList = categoryController.GetAll();
+                        foreach (var cat in catList)
+                        {
+                            Console.WriteLine(cat);
+                        }
                         break;
                     }
                 default:
