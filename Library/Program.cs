@@ -31,6 +31,7 @@ public class program
         menu.AppendLine("3)Add Book");
         menu.AppendLine("4)Book List");
         menu.AppendLine("5)Get Category Info");
+        menu.AppendLine("6)Delete Category");
 
         for (; ; )
         {
@@ -99,6 +100,14 @@ public class program
                         {
                             Console.WriteLine(book);
                         }
+                        break;
+                    }
+                case "6":
+                    {
+                        Console.WriteLine("Please enter category id for delete");
+                        var catId = Convert.ToInt32(Console.ReadLine());
+                        var res = categoryController.Delete(catId);
+                        Console.WriteLine(res);
                         break;
                     }
                 default:

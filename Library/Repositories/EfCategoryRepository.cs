@@ -23,7 +23,9 @@ public class EfCategoryRepository : ICategoryRepository
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        var cat = _context.Categories.Find(id);
+        _context.Categories.Remove(cat);    
+        _context.SaveChanges();
     }
 
     public IEnumerable<Category> GetAll()

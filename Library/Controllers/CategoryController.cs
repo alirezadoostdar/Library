@@ -36,4 +36,17 @@ public class CategoryController
     {
        return _repository.GetById(catId);
     }
+
+    public string Delete(int catId)
+    {
+        var cat = _repository.GetById(catId);
+        if (cat == null)
+            return "category by this Id not Found";
+
+        if (cat.Books.Count > 0)
+            return "This category has been used and cannot be deleted.";
+
+        _repository.Delete(catId);
+        return "This Category deleted successfully.";
+    }
 }
