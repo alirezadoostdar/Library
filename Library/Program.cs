@@ -30,6 +30,7 @@ public class program
         menu.AppendLine("2)Category List");
         menu.AppendLine("3)Add Book");
         menu.AppendLine("4)Book List");
+        menu.AppendLine("5)Get Category Info");
 
         for (; ; )
         {
@@ -83,6 +84,18 @@ public class program
                     {
                         var BookList = bookController.GetAll();
                         foreach (var book in BookList)
+                        {
+                            Console.WriteLine(book);
+                        }
+                        break;
+                    }
+                case "5":
+                    {
+                        Console.WriteLine("Please enter category id");
+                        var catId = Convert.ToInt32(Console.ReadLine());
+                        var cat = categoryController.GetInfo(catId);
+                        Console.WriteLine(cat);
+                        foreach (var book in cat.Books)
                         {
                             Console.WriteLine(book);
                         }

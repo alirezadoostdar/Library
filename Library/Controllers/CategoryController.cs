@@ -31,4 +31,9 @@ public class CategoryController
     {
         return _repository.GetAll().ToList();
     }
+
+    public Category GetInfo(int catId)
+    {
+       return _repository.GetById(catId);
+    }
 }

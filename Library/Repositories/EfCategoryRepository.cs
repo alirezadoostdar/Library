@@ -28,12 +28,15 @@ public class EfCategoryRepository : ICategoryRepository
 
     public IEnumerable<Category> GetAll()
     {
-        return _context.Categories;
+        var list =  _context.Categories;
+        return list;
     }
 
     public Category GetById(int id)
     {
-        throw new NotImplementedException();
+        var cat =  _context.Categories.Where(x => x.Id == id)
+                    .Include(b => b.Books).FirstOrDefault();
+        return cat;
     }
 
     public bool IsDupplicat(string title)
