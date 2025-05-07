@@ -2,10 +2,12 @@
 using Library.Controllers;
 using Library.Interfaces;
 using Library.Models;
+using Library.Models.Books;
 using Library.Models.Categories;
 using Library.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
+using System.Text;
 
 public class program
 {
@@ -17,11 +19,17 @@ public class program
             .AddScoped<IBookRepository, EfBookCategory>()
             .AddScoped<ICategoryRepository, EfCategoryRepository>()
             .AddScoped<CategoryController>()
+            .AddScoped<BookController>()
             .BuildServiceProvider();
 
         var categoryController = serviceCollection.GetRequiredService<CategoryController>();
+        var bookController = serviceCollection.GetRequiredService<BookController>();
 
-        var menu = "1)Add Category 2)Category List";
+        StringBuilder menu = new();
+        menu.AppendLine("1)Add Category");
+        menu.AppendLine("2)Category List");
+        menu.AppendLine("3)Add Book");
+        menu.AppendLine("4)Book List");
 
         for (; ; )
         {
@@ -48,6 +56,35 @@ public class program
                         foreach (var cat in catList)
                         {
                             Console.WriteLine(cat);
+                        }
+                        break;
+                    }
+                case "3":
+                    {
+                        Console.WriteLine("Please enter title");
+                        var title = Console.ReadLine();
+                        Console.WriteLine("Please enter author");
+                        var author = Console.ReadLine();
+                        Console.WriteLine("Please enter code");
+                        var code = Console.ReadLine();
+                        Console.WriteLine("Please enter category Id");
+                        var catId =Convert.ToInt32(Console.ReadLine());
+                        var book = new AddBookDto
+                        {
+                            Title = title,
+                            Author = author,
+                            CategoryId = catId,
+                            Code = code
+                        };
+                        bookController.Add(book);
+                        break;
+                    }
+                case "4":
+                    {
+                        var BookList = bookController.GetAll();
+                        foreach (var book in BookList)
+                        {
+                            Console.WriteLine(book);
                         }
                         break;
                     }

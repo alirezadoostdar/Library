@@ -2,6 +2,7 @@
 using Library.Interfaces;
 using Library.Models;
 using Library.Models.Books;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Repositories;
 
@@ -14,7 +15,8 @@ public class EfBookCategory : IBookRepository
     }
     public void Add(Book book)
     {
-        throw new NotImplementedException();
+        _context.Books.Add(book);
+        _context.SaveChanges();
     }
 
     public void Delete(Book book)
@@ -29,7 +31,8 @@ public class EfBookCategory : IBookRepository
 
     public IEnumerable<Book> GetAll()
     {
-        throw new NotImplementedException();
+        var list = _context.Books;
+        return list;
     }
 
     public void Update(Book book)
