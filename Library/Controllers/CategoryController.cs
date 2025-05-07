@@ -49,4 +49,10 @@ public class CategoryController
         _repository.Delete(catId);
         return "This Category deleted successfully.";
     }
+
+    public string Update(UpdateCategoryDto cat)
+    {
+        _repository.Update(new Category { Id = cat.Id, Title = cat.Title});
+        return "The category updated successfully.";
+    }
 }

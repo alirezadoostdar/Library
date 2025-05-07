@@ -30,7 +30,7 @@ public class EfCategoryRepository : ICategoryRepository
 
     public IEnumerable<Category> GetAll()
     {
-        var list =  _context.Categories;
+        var list =  _context.Categories.AsNoTracking();
         return list;
     }
 
@@ -48,6 +48,7 @@ public class EfCategoryRepository : ICategoryRepository
 
     public void Update(Category category)
     {
-        throw new NotImplementedException();
+        _context.Update(category);
+        _context.SaveChanges();
     }
 }

@@ -32,6 +32,7 @@ public class program
         menu.AppendLine("4)Book List");
         menu.AppendLine("5)Get Category Info");
         menu.AppendLine("6)Delete Category");
+        menu.AppendLine("7)Update Category");
 
         for (; ; )
         {
@@ -107,6 +108,21 @@ public class program
                         Console.WriteLine("Please enter category id for delete");
                         var catId = Convert.ToInt32(Console.ReadLine());
                         var res = categoryController.Delete(catId);
+                        Console.WriteLine(res);
+                        break;
+                    }
+                case "7":
+                    {
+                        Console.WriteLine("Please enter category id for Update");
+                        var catId = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Please enter new category title");
+                        var Title = Console.ReadLine();
+                        var cat = new UpdateCategoryDto
+                        {
+                            Id = catId,
+                            Title = Title
+                        };
+                        var res = categoryController.Update(cat);
                         Console.WriteLine(res);
                         break;
                     }
