@@ -3,6 +3,7 @@
 public interface ICategoryRepository
 {
     void Add(Category category);
+    List<GetCategoryDto> GetAll();
 }
 
 
@@ -19,5 +20,14 @@ public class CategoryRepository : ICategoryRepository
     {
         _context.Categories.Add(category);
         _context.SaveChanges();
+    }
+
+    public List<GetCategoryDto> GetAll()
+    {
+       return _context.Categories.Select(x => new GetCategoryDto
+       {
+           Id = x.Id,
+           Title = x.Title,
+       }).ToList();
     }
 }

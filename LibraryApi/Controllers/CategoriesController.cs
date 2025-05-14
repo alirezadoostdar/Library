@@ -20,5 +20,11 @@ namespace LibraryApi.Controllers
             var category = new Category { Title = dto.Title };
             _categoryRepository.Add(category);
         }
+
+        [HttpGet]
+        public List<GetCategoryDto> GetAll()
+        {
+            return _categoryRepository.GetAll();
+        }
     }
 }

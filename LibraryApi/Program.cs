@@ -1,4 +1,5 @@
 using LibraryApi.Models;
+using LibraryApi.Models.Categories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnectionString"));
 });
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();  
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
