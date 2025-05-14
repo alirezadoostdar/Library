@@ -1,4 +1,6 @@
-﻿namespace LibraryApi.Models.Books;
+﻿using LibraryApi.Models.Categories;
+
+namespace LibraryApi.Models.Books;
 
 public class Book
 {
@@ -6,4 +8,5 @@ public class Book
     public string Title { get; set; }
     public string Author { get; set; }
     public string Description { get; set; }
+    public Category Category{ get; set; }
 }
