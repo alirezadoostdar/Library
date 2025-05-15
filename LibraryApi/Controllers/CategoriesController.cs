@@ -26,5 +26,11 @@ namespace LibraryApi.Controllers
         {
             return _categoryRepository.GetAll();
         }
+
+        [HttpPut]
+        public UpdateCategoryDto Update(UpdateCategoryDto dto)
+        {
+            var 
+        }
     }
 }
