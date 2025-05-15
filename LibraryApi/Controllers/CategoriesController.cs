@@ -30,7 +30,14 @@ namespace LibraryApi.Controllers
         [HttpPut]
         public UpdateCategoryDto Update(UpdateCategoryDto dto)
         {
-            var 
+            var category = _categoryRepository.GetById(dto.Id);
+            if(category is  not null)
+            {
+                category.Title = dto.Title;
+                _categoryRepository.Update(category);
+                return dto;
+            }
+            return null;
         }
     }
 }
