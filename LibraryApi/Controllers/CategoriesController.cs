@@ -52,6 +52,7 @@ namespace LibraryApi.Controllers
             }
         }
 
+        //Test
         [HttpDelete("{id:int}")]
         public void Delete(int id)
         {
@@ -61,5 +62,6 @@ namespace LibraryApi.Controllers
                 _categoryRepository.Remove(category);
             }
         }
+
     }
 }
