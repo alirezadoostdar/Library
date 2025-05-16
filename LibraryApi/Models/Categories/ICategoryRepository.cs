@@ -4,7 +4,7 @@ public interface ICategoryRepository
 {
     void Add(Category category);
     List<GetCategoryDto> GetAll();
-    Category GetById(int id);
+    Category? GetById(int id);
     void Update(Category category);
 }
 
@@ -35,8 +35,7 @@ public class CategoryRepository : ICategoryRepository
 
     public Category? GetById(int id)
     {
-        return _context.Categories.Where(x => x.Id == id)
-            .FirstOrDefault();
+        return _context.Categories.Find(id);
     }
 
     public void Update(Category category)
