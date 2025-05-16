@@ -27,6 +27,20 @@ namespace LibraryApi.Controllers
             return _categoryRepository.GetAll();
         }
 
+        [HttpGet("{id:int}")]
+        public GetCategoryDto GetById(int id)
+        {
+            var category = _categoryRepository.GetById(id);
+            GetCategoryDto getCategoryDto = new();
+            if (category != null)
+            {
+                getCategoryDto.Title = category.Title;
+                getCategoryDto.Id = category.Id;
+            }
+
+            return getCategoryDto;
+        }
+
         [HttpPut("{id:int}")]
         public void Update(int id, UpdateCategoryDto dto)
         {
