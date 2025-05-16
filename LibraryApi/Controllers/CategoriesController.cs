@@ -38,10 +38,14 @@ namespace LibraryApi.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public void Delete(int id)
         {
-
+            var category = _categoryRepository.GetById(id);
+            if(category is not null)
+            {
+                _categoryRepository.Remove(category);
+            }
         }
     }
 }

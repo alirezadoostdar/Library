@@ -6,6 +6,7 @@ public interface ICategoryRepository
     List<GetCategoryDto> GetAll();
     Category? GetById(int id);
     void Update(Category category);
+    void Remove(Category category);
 }
 
 
@@ -36,6 +37,12 @@ public class CategoryRepository : ICategoryRepository
     public Category? GetById(int id)
     {
         return _context.Categories.Find(id);
+    }
+
+    public void Remove(Category category)
+    {
+        _context.Categories.Remove(category);
+        _context.SaveChanges();
     }
 
     public void Update(Category category)
