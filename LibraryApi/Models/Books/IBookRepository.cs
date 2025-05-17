@@ -3,6 +3,7 @@
 public interface IBookRepository
 {
     void Add(Book book);
+    List<GetBookDto> GetAll();
 }
 
 public class BookRepository : IBookRepository
@@ -18,5 +19,15 @@ public class BookRepository : IBookRepository
     {
         _context.Books.Add(book);
         _context.SaveChanges();
+    }
+
+    public List<GetBookDto> GetAll()
+    {
+        return _context.Books.Select(x => new GetBookDto
+        {
+            Tilte = x.Title,
+            Author = x.Author,
+            Description = x.Description,
+        }).ToList();
     }
 }

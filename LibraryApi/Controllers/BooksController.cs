@@ -25,5 +25,11 @@ namespace LibraryApi.Controllers
             };
             _bookRepository.Add(book);
         }
+
+        [HttpGet]
+        public List<GetBookDto> GetBooks()
+        {
+            return _bookRepository.GetAll();
+        }
     }
 }
