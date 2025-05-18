@@ -39,7 +39,21 @@ namespace LibraryApi.Controllers
             var book = _bookRepository.GetById(id);
             if (book != null)
             {
+                book.Title = dto.Title;
+                book.Author = dto.Author;
+                book.Code = dto.Code;
+                book.CategoryId = dto.CategoryId;
                 _bookRepository.Update(book);
+            }
+        }
+
+        [HttpDelete("{id:int}")]
+        public void Delete(int id)
+        {
+            var book = _bookRepository.GetById(id);
+            if (book is not null)
+            {
+                _bookRepository.Delete(book);
             }
         }
     }

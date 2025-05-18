@@ -4,6 +4,7 @@ namespace LibraryApi.Models.Books;
 
 public interface IBookRepository
 {
+    void Delete(Book book);    
     void Add(Book book);
     List<GetBookDto> GetAll();
     void Update(Book book);
@@ -22,6 +23,12 @@ public class BookRepository : IBookRepository
     public void Add(Book book)
     {
         _context.Books.Add(book);
+        _context.SaveChanges();
+    }
+
+    public void Delete(Book book)
+    {
+        _context.Books.Remove(book);
         _context.SaveChanges();
     }
 
