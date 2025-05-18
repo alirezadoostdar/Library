@@ -21,7 +21,8 @@ namespace LibraryApi.Controllers
             {
                 Title = dto.Title,
                 Author = dto.Author,
-                Description = dto.Description,
+                Code = dto.Code,
+                CategoryId = dto.CategoryId,
             };
             _bookRepository.Add(book);
         }
@@ -30,6 +31,16 @@ namespace LibraryApi.Controllers
         public List<GetBookDto> GetBooks()
         {
             return _bookRepository.GetAll();
+        }
+
+        [HttpPut("{id:int}")]
+        public void Put(int id, UpdateBookDto dto)
+        {
+            var book = _bookRepository.GetById(id);
+            if (book != null)
+            {
+                _bookRepository.Update(book);
+            }
         }
     }
 }

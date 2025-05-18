@@ -1,9 +1,13 @@
-﻿namespace LibraryApi.Models.Books;
+﻿using LibraryApi.Models.Categories;
+
+namespace LibraryApi.Models.Books;
 
 public interface IBookRepository
 {
     void Add(Book book);
     List<GetBookDto> GetAll();
+    void Update(Book book);
+    Book? GetById(int id);
 }
 
 public class BookRepository : IBookRepository
@@ -27,7 +31,18 @@ public class BookRepository : IBookRepository
         {
             Tilte = x.Title,
             Author = x.Author,
-            Description = x.Description,
+            Code = x.Code,
         }).ToList();
+    }
+
+    public Book? GetById(int id)
+    {
+        return _context.Books.Find(id);
+    }
+
+    public void Update(Book book)
+    {
+        _context.Books.Update(book);
+        _context.SaveChanges();
     }
 }
