@@ -34,7 +34,7 @@ namespace LibraryApi.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public void Put(int id, UpdateBookDto dto)
+        public void Update(int id, UpdateBookDto dto)
         {
             var book = _bookRepository.GetById(id);
             if (book != null)
