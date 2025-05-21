@@ -56,5 +56,17 @@ namespace LibraryApi.Controllers
                 _bookRepository.Delete(book);
             }
         }
+
+        [HttpPatch("{id:int}")]
+        public void UpdateRate(int id, UpdateBookRateDto dto)
+        {
+            var book = _bookRepository.GetById(id);
+            if(book is not null)
+            {
+                book.Rate = Convert.ToByte(dto.Rate);
+                _bookRepository.Update(book);   
+            }
+
+        }
     }
 }
