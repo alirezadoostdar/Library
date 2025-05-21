@@ -11,7 +11,7 @@ public class Book
     public string Code { get; set; } = string.Empty;
     public DateTime PublichDate { get; set; }
     public int Pages { get; set; }
-    public int Rate { get; set; }
+    public byte Rate { get; set; }
     public int CategoryId { get; set; }
     public Category Category { get; set; }
 }
