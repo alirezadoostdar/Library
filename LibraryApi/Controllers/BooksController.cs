@@ -68,5 +68,21 @@ namespace LibraryApi.Controllers
             }
 
         }
+
+        [HttpGet("{id:int}")]
+        public GetBookDto GetById(int id)
+        {
+            var book = _bookRepository.GetById(id);
+            var bookDto = new GetBookDto()
+            {
+                Id = book.Id,
+                Tilte = book.Title,
+                Author = book.Author,
+                Code = book.Code,
+                AgeGroup = book.Category.AgeGroup.Title,
+                Category = book.Category.Title
+            };
+            return bookDto;
+        }
     }
 }

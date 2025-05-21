@@ -1,17 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace LibraryApi.Migrations
 {
     /// <inheritdoc />
-    public partial class addAgeRange : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Agegroups",
+                name: "AgeGroups",
                 columns: table => new
                 {
                     Id = table.Column<byte>(type: "tinyint", nullable: false),
@@ -19,7 +20,7 @@ namespace LibraryApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Agegroups", x => x.Id);
+                    table.PrimaryKey("PK_AgeGroups", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,15 +30,15 @@ namespace LibraryApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    AgegroupId = table.Column<byte>(type: "tinyint", nullable: false)
+                    AgeGroupId = table.Column<byte>(type: "tinyint", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Categories_Agegroups_AgegroupId",
-                        column: x => x.AgegroupId,
-                        principalTable: "Agegroups",
+                        name: "FK_Categories_AgeGroups_AgeGroupId",
+                        column: x => x.AgeGroupId,
+                        principalTable: "AgeGroups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -52,7 +53,9 @@ namespace LibraryApi.Migrations
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rate = table.Column<int>(type: "int", nullable: false),
+                    PublichDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Pages = table.Column<int>(type: "int", nullable: false),
+                    Rate = table.Column<byte>(type: "tinyint", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -63,7 +66,7 @@ namespace LibraryApi.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -72,9 +75,9 @@ namespace LibraryApi.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_AgegroupId",
+                name: "IX_Categories_AgeGroupId",
                 table: "Categories",
-                column: "AgegroupId");
+                column: "AgeGroupId");
         }
 
         /// <inheritdoc />
@@ -87,7 +90,7 @@ namespace LibraryApi.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Agegroups");
+                name: "AgeGroups");
         }
     }
 }

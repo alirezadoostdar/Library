@@ -7,7 +7,7 @@ public class Category
 {
     public int Id { get; set; }
     public string Title { get; set; }
-    public byte AgegroupId { get; set; }
-    public Agegroup  Agegroup { get; set; }
+    public byte AgeGroupId { get; set; }
+    public AgeGroup  AgeGroup { get; set; }
     public HashSet<Book> Books { get; set; } = new HashSet<Book>();
 }

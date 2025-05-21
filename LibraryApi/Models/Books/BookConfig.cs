@@ -27,7 +27,7 @@ namespace LibraryApi.Models.Books
                 .IsRequired();
 
             builder.HasOne(b => b.Category)
-                .WithMany(c => c.Books)
+                .WithMany(x => x.Books)
                 .HasForeignKey(b => b.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();

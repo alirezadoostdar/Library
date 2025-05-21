@@ -13,9 +13,9 @@ public class CategoryConfig : IEntityTypeConfiguration<Category>
             .IsRequired()
             .HasMaxLength(200);
 
-        builder.HasOne(x => x.Agegroup)
+        builder.HasOne(x => x.AgeGroup)
             .WithMany()
-            .HasForeignKey(x => x.AgegroupId)
+            .HasForeignKey(x => x.AgeGroupId)
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
     }

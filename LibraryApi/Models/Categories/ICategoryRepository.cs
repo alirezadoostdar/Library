@@ -1,4 +1,6 @@
-﻿namespace LibraryApi.Models.Categories;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace LibraryApi.Models.Categories;
 
 public interface ICategoryRepository
 {
@@ -36,7 +38,9 @@ public class CategoryRepository : ICategoryRepository
 
     public Category? GetById(int id)
     {
-        return _context.Categories.Find(id);
+        return _context.Categories
+            .Include(a => a.AgeGroup)
+            .FirstOrDefault(c => c.Id == id);
     }
 
     public void Remove(Category category)

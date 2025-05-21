@@ -1,4 +1,5 @@
 ﻿using LibraryApi.Models.Categories;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApi.Models.Books;
 
@@ -34,11 +35,15 @@ public class BookRepository : IBookRepository
 
     public List<GetBookDto> GetAll()
     {
-        return _context.Books.Select(x => new GetBookDto
+        return _context.Books
+            .Include(c => c.Category)
+            .Include(c => c.Category.AgeGroup).Select(x => new GetBookDto
         {
             Tilte = x.Title,
             Author = x.Author,
             Code = x.Code,
+            Category = x.Category.Title,
+            AgeGroup = x.Category.AgeGroup.Title
         }).ToList();
     }
 

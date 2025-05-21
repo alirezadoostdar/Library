@@ -17,10 +17,10 @@ public class ApplicationDbContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new BookConfig());
         modelBuilder.ApplyConfiguration(new CategoryConfig());
-        modelBuilder.ApplyConfiguration(new AgegroupConfig());
+        modelBuilder.ApplyConfiguration(new AgeGroupConfig());
     }
 
     public DbSet<Category> Categories { get; set; }
     public DbSet<Book> Books{ get; set; }
-    public DbSet<Agegroup> Agegroups { get; set; }
+    public DbSet<AgeGroup> AgeGroups { get; set; }
 }
