@@ -47,7 +47,7 @@ public class BookRepository : IBookRepository
 
     public Book? GetById(int id)
     {
-        return _context.Books.Find(id);
+        return _context.Books.Include(x => x.Rates).FirstOrDefault(x => x.Id == id);
     }
 
     public void Update(Book book)

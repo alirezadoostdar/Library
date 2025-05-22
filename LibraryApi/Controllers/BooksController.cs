@@ -79,7 +79,8 @@ namespace LibraryApi.Controllers
                 Author = book.Author,
                 Code = book.Code,
                 AgeGroup = book.Category.AgeGroup.Title,
-                Category = book.Category.Title
+                Category = book.Category.Title,
+                Rates = book.Rates.Select(x => x.Value).ToList()
             };
             return bookDto;
         }
