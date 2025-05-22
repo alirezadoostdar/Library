@@ -63,7 +63,6 @@ namespace LibraryApi.Controllers
             var book = _bookRepository.GetById(id);
             if(book is not null)
             {
-                book.Rate = Convert.ToByte(dto.Rate);
                 _bookRepository.Update(book);   
             }
 

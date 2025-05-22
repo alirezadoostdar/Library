@@ -1,4 +1,5 @@
 ﻿using LibraryApi.Models.Categories;
+using LibraryApi.Models.Rate;
 
 namespace LibraryApi.Models.Books;
 
@@ -11,7 +12,7 @@ public class Book
     public string Code { get; set; } = string.Empty;
     public DateTime PublichDate { get; set; }
     public int Pages { get; set; }
-    public byte Rate { get; set; }
+    public HashSet<BookRate> Rates { get; set; } = new();
     public int CategoryId { get; set; }
     public Category Category { get; set; }
 }

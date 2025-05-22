@@ -35,9 +35,7 @@ public class BookRepository : IBookRepository
 
     public List<GetBookDto> GetAll()
     {
-        return _context.Books
-            .Include(c => c.Category)
-            .Include(c => c.Category.AgeGroup).Select(x => new GetBookDto
+        return _context.Books.Select(x => new GetBookDto
         {
             Tilte = x.Title,
             Author = x.Author,

@@ -17,9 +17,6 @@ namespace LibraryApi.Models.Books
                 .HasMaxLength(500)
                 .IsRequired();
 
-            builder.Property(b => b.Rate)
-                .IsRequired();
-
             builder.Property(b => b.PublichDate)
                 .IsRequired();
 
