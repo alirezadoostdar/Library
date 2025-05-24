@@ -29,10 +29,13 @@ public class CategoryRepository : ICategoryRepository
 
     public List<GetCategoryDto> GetAll()
     {
-       return _context.Categories.Select(x => new GetCategoryDto
+       return _context.Categories
+            .Include(x => x.Books)
+            .Select(x => new GetCategoryDto
        {
            Id = x.Id,
            Title = x.Title,
+           Rate = x.Books.Select(x => x.Rates.Select(x => x.Value).Average()).Average(),
        }).ToList();
     }
 
