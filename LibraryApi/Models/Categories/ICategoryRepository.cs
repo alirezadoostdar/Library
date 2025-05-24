@@ -29,6 +29,9 @@ public class CategoryRepository : ICategoryRepository
 
     public List<GetCategoryDto> GetAll()
     {
+        var list = _context.Categories
+            .Include(x => x.Books)
+            .Include(x => x.Books.).ToList();
        return _context.Categories
             .Include(x => x.Books)
             .Select(x => new GetCategoryDto
