@@ -90,5 +90,11 @@ namespace LibraryApi.Controllers
         {
             return _bookRepository.GetByCode(code);
         }
+
+        [HttpGet("/get-list-by-rate")]
+        public List<GetBookByRateDto> GetlistByRate()
+        {
+            return _bookRepository.GetListByRate();
+        }
     }
 }

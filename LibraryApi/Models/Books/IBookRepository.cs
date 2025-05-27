@@ -11,6 +11,7 @@ public interface IBookRepository
     void Update(Book book);
     Book? GetById(int id);
     GetBookDto? GetByCode(string code);
+    List<GetBookByRateDto> GetListByRate();
 }
 
 public class BookRepository : IBookRepository
@@ -67,6 +68,19 @@ public class BookRepository : IBookRepository
             .Include(x => x.Category)
             .Include(x => x.Category.AgeGroup)
             .FirstOrDefault(x => x.Id == id);
+    }
+
+    public List<GetBookByRateDto> GetListByRate()
+    {
+        return _context.Books.Select(x => new GetBookByRateDto
+        {
+            Tilte = x.Title,
+            Author = x.Author,
+            Code = x.Code,
+            Category = x.Category.Title,
+            AgeGroup = x.Category.AgeGroup.Title,
+            Rate = x.Rates.Any() ? x.Rates.Average(x => x.Value) : 0,
+        }).ToList();
     }
 
     public void Update(Book book)
