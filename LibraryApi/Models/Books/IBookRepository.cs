@@ -10,6 +10,7 @@ public interface IBookRepository
     List<GetBookDto> GetAll();
     void Update(Book book);
     Book? GetById(int id);
+    GetBookDto? GetByCode(string code);
 }
 
 public class BookRepository : IBookRepository
@@ -43,6 +44,20 @@ public class BookRepository : IBookRepository
             Category = x.Category.Title,
             AgeGroup = x.Category.AgeGroup.Title
         }).ToList();
+    }
+
+    public GetBookDto? GetByCode(string code)
+    {
+        return _context.Books.Where(x => x.Code == code)
+            .Select(x => new GetBookDto
+            {
+                Id = x.Id,
+                Tilte = x.Title,
+                AgeGroup = x.Category.AgeGroup.Title,
+                Author = x.Author,
+                Code = x.Code,
+                Category = x.Category.Title
+            }).FirstOrDefault();
     }
 
     public Book? GetById(int id)

@@ -84,5 +84,11 @@ namespace LibraryApi.Controllers
             };
             return bookDto;
         }
+
+        [HttpGet("/get-by-Code/{code}")]
+        public GetBookDto? GetByCode(string code)
+        {
+            return _bookRepository.GetByCode(code);
+        }
     }
 }
