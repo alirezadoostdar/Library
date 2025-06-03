@@ -13,7 +13,7 @@ namespace LibraryApi.Migrations
         public override void Up()
         {
             Create.Table("AgeGroups")
-                  .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+                  .WithColumn("Id").AsInt16().PrimaryKey().Identity()
                   .WithColumn("Title").AsString(50).NotNullable();
         }
         public override void Down()

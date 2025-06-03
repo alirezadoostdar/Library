@@ -43,7 +43,8 @@ class Program
         // Instantiate the runner
         var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
 
-        // Execute the migrations
-        runner.MigrateUp();
+        // Execute the migrations 
+        runner.MigrateUp(202506032316);
+        //runner.MigrateDown(0);
     }
 }
