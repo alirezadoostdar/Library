@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace LibraryApi.Migrations
 {
     [Migration(202506032316)]
-    internal class _202506032316_Add_Category_Table : Migration
+    public class _202506032316_Add_Category_Table : Migration
     {
 
         public override void Up()
