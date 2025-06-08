@@ -45,6 +45,6 @@ class Program
 
         // Execute the migrations 
         runner.MigrateUp(202506032316);
-        //runner.MigrateDown(0);
+        //runner.MigrateDown(202506032258);
     }
 }
