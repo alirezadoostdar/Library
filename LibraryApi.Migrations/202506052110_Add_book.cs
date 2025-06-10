@@ -47,6 +47,18 @@ public class _202506052110_Add_book : Migration
             .ForeignColumn("CategoryId")
             .ToTable("CategoryId")
             .PrimaryColumn("Id");
+
+        Create.Table("Books_Rates")
+            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+            .WithColumn("Value").AsFloat().NotNullable()
+            .WithColumn("BookId").AsInt32().NotNullable();
+
+        Create.ForeignKey("Fk_Books_Rates")
+            .FromTable("Books_Rates")
+            .ForeignColumns("BookId")
+            .ToTable("Books")
+            .PrimaryColumn("Id");
+
     }
 
     public override void Down()
