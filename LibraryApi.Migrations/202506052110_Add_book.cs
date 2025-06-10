@@ -42,7 +42,11 @@ public class _202506052110_Add_book : Migration
             .ToTable("Authors")
             .PrimaryColumn("Id");
 
-
+        Create.ForeignKey("Fk_Books_Categories")
+            .FromTable("Books")
+            .ForeignColumn("CategoryId")
+            .ToTable("CategoryId")
+            .PrimaryColumn("Id");
     }
 
     public override void Down()
