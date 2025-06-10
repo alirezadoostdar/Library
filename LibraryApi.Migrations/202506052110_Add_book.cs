@@ -24,6 +24,16 @@ public class _202506052110_Add_book : Migration
             .WithColumn("Address").AsString(200)
             .WithColumn("LicenseNumber").AsInt32().NotNullable()
             .WithColumn("Birthday").AsDateTime().NotNullable();
+
+        Create.Table("Books")
+            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+            .WithColumn("Title").AsString(100).NotNullable()
+            .WithColumn("AuthorId").AsInt32().NotNullable()
+            .WithColumn("Description").AsString(200)
+            .WithColumn("Code").AsString(20).NotNullable()
+            .WithColumn("PublishDate").AsDateTime().NotNullable()
+            .WithColumn("Pages").AsInt32().NotNullable()
+            .WithColumn("CategoryId").AsInt32();
     }
 
     public override void Down()
