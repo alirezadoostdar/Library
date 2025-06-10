@@ -1,4 +1,5 @@
 using FluentMigrator;
+using FluentMigrator.Expressions;
 
 namespace LibraryApi.Migrations;
 
@@ -34,6 +35,14 @@ public class _202506052110_Add_book : Migration
             .WithColumn("PublishDate").AsDateTime().NotNullable()
             .WithColumn("Pages").AsInt32().NotNullable()
             .WithColumn("CategoryId").AsInt32();
+
+        Create.ForeignKey("Fk_Books_Authors")
+            .FromTable("Books")
+            .ForeignColumns("AuthorId")
+            .ToTable("Authors")
+            .PrimaryColumn("Id");
+
+
     }
 
     public override void Down()
