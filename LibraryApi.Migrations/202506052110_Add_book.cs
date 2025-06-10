@@ -7,10 +7,6 @@ public class _202506052110_Add_book : Migration
 {
     public override void Up()
     {
-        Create.Table("ContactInfos")
-            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-            .WithColumn("Address").AsString(200).Nullable()
-            .WithColumn("PhoneNumber").AsString(20).NotNullable();
 
         Create.Table("BookRates")
             .WithColumn("Id").AsInt32().PrimaryKey().Identity()
@@ -48,13 +44,8 @@ public class _202506052110_Add_book : Migration
             .ToTable("CategoryId")
             .PrimaryColumn("Id");
 
-        Create.Table("Books_Rates")
-            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-            .WithColumn("Value").AsFloat().NotNullable()
-            .WithColumn("BookId").AsInt32().NotNullable();
-
         Create.ForeignKey("Fk_Books_Rates")
-            .FromTable("Books_Rates")
+            .FromTable("BookRates")
             .ForeignColumns("BookId")
             .ToTable("Books")
             .PrimaryColumn("Id");
@@ -63,6 +54,12 @@ public class _202506052110_Add_book : Migration
 
     public override void Down()
     {
-        throw new NotImplementedException();
+        Delete.ForeignKey("Fk_Books_Rates");
+        Delete.Table("Books_Rates");
+        Delete.ForeignKey("Fk_Books_Categories");
+        Delete.ForeignKey("Fk_Books_Authors");
+        Delete.Table("Books");
+        Delete.Table("Authors");
+        Delete.Table("BookRates");
     }
 }
