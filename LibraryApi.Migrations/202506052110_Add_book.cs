@@ -50,6 +50,8 @@ public class _202506052110_Add_book : Migration
             .ToTable("Books")
             .PrimaryColumn("Id");
 
+        ///
+
     }
 
     public override void Down()
