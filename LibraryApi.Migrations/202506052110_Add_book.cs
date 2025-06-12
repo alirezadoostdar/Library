@@ -51,6 +51,7 @@ public class _202506052110_Add_book : Migration
             .PrimaryColumn("Id");
 
         ///
+        ///
 
     }
 
