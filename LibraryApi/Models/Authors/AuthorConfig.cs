@@ -7,6 +7,10 @@ public class AuthorConfig : IEntityTypeConfiguration<Author>
 {
     public void Configure(EntityTypeBuilder<Author> builder)
     {
-        builder.Property(_ => _.Id).
+        builder.ToTable("Authors");
+
+        builder.HasKey(a => a.Id);
+
+
     }
 }
