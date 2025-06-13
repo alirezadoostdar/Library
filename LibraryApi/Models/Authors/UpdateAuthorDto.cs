@@ -1,5 +1,5 @@
 ﻿namespace LibraryApi.Models.Authors;
 
-public class AddAuthorDto
+public class UpdateAuthorDto 
 {
 }
