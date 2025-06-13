@@ -3,6 +3,7 @@ using FluentMigrator.Expressions;
 
 namespace LibraryApi.Migrations;
 
+[Migration(202506052110)]
 public class _202506052110_Add_book : Migration
 {
     public override void Up()
@@ -41,7 +42,7 @@ public class _202506052110_Add_book : Migration
         Create.ForeignKey("Fk_Books_Categories")
             .FromTable("Books")
             .ForeignColumn("CategoryId")
-            .ToTable("CategoryId")
+            .ToTable("Categories")
             .PrimaryColumn("Id");
 
         Create.ForeignKey("Fk_Books_Rates")
@@ -49,9 +50,6 @@ public class _202506052110_Add_book : Migration
             .ForeignColumns("BookId")
             .ToTable("Books")
             .PrimaryColumn("Id");
-
-        ///
-        ///
 
     }
 

@@ -44,7 +44,7 @@ class Program
         var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
 
         // Execute the migrations 
-        runner.MigrateUp(202506032316);
+        runner.MigrateUp();
         //runner.MigrateDown(202506032258);
     }
 }
