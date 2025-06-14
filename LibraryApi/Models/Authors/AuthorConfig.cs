@@ -13,5 +13,7 @@ public class AuthorConfig : IEntityTypeConfiguration<Author>
 
         builder.Property(a => a.Name).HasMaxLength(50).IsRequired();
         builder.Property(a => a.Family).HasMaxLength(50).IsRequired();
+
+        builder.Property(a => a.ContactInfo.Address).HasMaxLength(200);
     }
 }
