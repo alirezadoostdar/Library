@@ -3,11 +3,12 @@
 namespace LibraryApi.Controllers;
 
 [ApiController]
-[Route("")]
+[Route("api/Authors")]
 public class AuthorsController : Controller
 {
-    public IActionResult Index()
+    private readonly 
+    public AuthorsController()
     {
-        return View();
+        
     }
 }
