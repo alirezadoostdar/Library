@@ -17,6 +17,7 @@ public class AuthorRepository : IAuthorRepository
 
     public void Add(Author author)
     {
-        throw new NotImplementedException();
+        Context.Authors.Add(author);
+        Context.SaveChanges();
     }
 }
