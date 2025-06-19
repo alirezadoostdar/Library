@@ -4,4 +4,5 @@ public class AddAuthorDto
 {
     public string Name { get; set; }
     public string Family { get; set; }
+    public int LicenseNumber { get; set; }
 }
