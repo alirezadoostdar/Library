@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryApi.Models.Authors;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryApi.Controllers;
 
@@ -6,9 +7,20 @@ namespace LibraryApi.Controllers;
 [Route("api/Authors")]
 public class AuthorsController : Controller
 {
-    private readonly 
-    public AuthorsController()
+    private readonly IAuthorRepository _authorRepository;
+
+    public AuthorsController(IAuthorRepository authorRepository)
     {
-        
+        _authorRepository = authorRepository;
+    }
+
+    [HttpPost]
+    public void Add(AddAuthorDto dto)
+    {
+        Author author = new Author
+        {
+            Name = dto.
+        }
+        _authorRepository.Add()
     }
 }
