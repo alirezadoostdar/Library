@@ -7,4 +7,5 @@ public class AddAuthorDto
     public int LicenseNumber { get; set; }
     public string PhoneNumber { get; set; }
     //
+    //
 }
