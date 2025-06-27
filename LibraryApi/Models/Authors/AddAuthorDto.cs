@@ -6,11 +6,5 @@ public class AddAuthorDto
     public string Family { get; set; }
     public int LicenseNumber { get; set; }
     public string PhoneNumber { get; set; }
-    //
-    //
-    //
-    //
-    //
-
-    //
+    public string Address { get; set; }
 }
