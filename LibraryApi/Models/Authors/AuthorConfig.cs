@@ -18,5 +18,11 @@ public class AuthorConfig : IEntityTypeConfiguration<Author>
         builder.Property(a => a.ContactInfo.PhoneNumber).HasMaxLength(50).IsRequired();
         builder.Property(a => a.LicenseNumber).IsRequired();
         builder.Property(a => a.Birthday).IsRequired();
+
+        builder.OwnsOne(_ => _.ContactInfo, c =>
+        {
+            c.Property(_ => _.PhoneNumber).HasColumnName("PhoneNumber");
+            c.Property(_ => _.Address).HasColumnName("Address");
+        });
     }
 }
