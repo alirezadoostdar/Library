@@ -1,4 +1,5 @@
-﻿using LibraryApi.Models.Authors;
+﻿using FluentValidation.Validators;
+using LibraryApi.Models.Authors;
 using LibraryApi.Models.Persons;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ public class AuthorsController : Controller
         _authorRepository = authorRepository;
     }
 
-    [HttpGet]
+    [HttpGet("{id:int}")]
     public GetAuthorDto GetById(int id)
     {
         var author = _authorRepository.FindById(id);
@@ -36,6 +37,12 @@ public class AuthorsController : Controller
 
     }
 
+    [HttpGet]
+    public List<GetAuthorDto> GetAll()
+    {
+        return _authorRepository.GetAll();
+    }
+
     [HttpPost]
     public void Add(AddAuthorDto dto)
     {
@@ -49,5 +56,20 @@ public class AuthorsController : Controller
         author.ContactInfo.PhoneNumber = dto.PhoneNumber;
 
         _authorRepository.Add(author);
+    }
+
+    [HttpPut("{id:int}")]
+    public void Update(int id, UpdateAuthorDto dto)
+    {
+        var author = _authorRepository.FindById(id);
+        if (author == null) 
+            throw new NullReferenceException(nameof(author));
+        author.Name = dto.Name;
+        author.Family = dto.Family;
+        author.Birthday = dto.Birthday;
+        author.LicenseNumber = dto.LicenseNumber;
+        author.ContactInfo.Address = dto.Address;
+        author.ContactInfo.PhoneNumber = dto.PhoneNumber;
+        _authorRepository.Update(author);
     }
 }

@@ -52,6 +52,6 @@ public class AuthorRepository : IAuthorRepository
 
     public void Update(Author author)
     {
-        throw new NotImplementedException();
+        Context.SaveChanges();
     }
 }
