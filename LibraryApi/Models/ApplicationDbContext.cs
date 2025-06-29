@@ -16,9 +16,11 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfiguration(new BookConfig());
-        modelBuilder.ApplyConfiguration(new CategoryConfig());
-        modelBuilder.ApplyConfiguration(new AgeGroupConfig());
+        //modelBuilder.ApplyConfiguration(new BookConfig());
+        //modelBuilder.ApplyConfiguration(new CategoryConfig());
+        //modelBuilder.ApplyConfiguration(new AgeGroupConfig());
+        //modelBuilder.ApplyConfiguration(new AuthorConfig());
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
 
     public DbSet<Category> Categories { get; set; }

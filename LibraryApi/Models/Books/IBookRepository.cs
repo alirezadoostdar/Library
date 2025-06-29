@@ -40,7 +40,6 @@ public class BookRepository : IBookRepository
         return _context.Books.Select(x => new GetBookDto
         {
             Tilte = x.Title,
-            Author = x.Author,
             Code = x.Code,
             Category = x.Category.Title,
             AgeGroup = x.Category.AgeGroup.Title
@@ -55,7 +54,6 @@ public class BookRepository : IBookRepository
                 Id = x.Id,
                 Tilte = x.Title,
                 AgeGroup = x.Category.AgeGroup.Title,
-                Author = x.Author,
                 Code = x.Code,
                 Category = x.Category.Title
             }).FirstOrDefault();
@@ -75,7 +73,6 @@ public class BookRepository : IBookRepository
         return _context.Books.Select(x => new GetBookByRateDto
         {
             Tilte = x.Title,
-            Author = x.Author,
             Code = x.Code,
             Category = x.Category.Title,
             AgeGroup = x.Category.AgeGroup.Title,

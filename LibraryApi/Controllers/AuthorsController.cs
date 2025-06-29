@@ -1,4 +1,5 @@
 ﻿using LibraryApi.Models.Authors;
+using LibraryApi.Models.Persons;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryApi.Controllers;
@@ -14,13 +15,39 @@ public class AuthorsController : Controller
         _authorRepository = authorRepository;
     }
 
+    [HttpGet]
+    public GetAuthorDto GetById(int id)
+    {
+        var author = _authorRepository.FindById(id);
+        if (author == null)
+            throw new NullReferenceException("Author not found");
+
+        var authorDto = new GetAuthorDto
+        {
+            Id = author.Id,
+            Name = author.Name,
+            Family = author.Family,
+            Birthday = author.Birthday,
+            Address = author.ContactInfo.Address,
+            PhoneNumber = author.ContactInfo.PhoneNumber,
+            LicenseNumber = author.LicenseNumber,
+        };
+        return authorDto;
+
+    }
+
     [HttpPost]
     public void Add(AddAuthorDto dto)
     {
-        Author author = new Author
-        {
-            Name = dto.
-        }
-        _authorRepository.Add()
+        Author author = new Author();
+        author.ContactInfo = new ContactInfo();
+        author.Name = dto.Name;
+        author.Family = dto.Family;
+        author.Birthday = dto.Birthday;
+        author.LicenseNumber = dto.LicenseNumber;
+        author.ContactInfo.Address = dto.Address;
+        author.ContactInfo.PhoneNumber = dto.PhoneNumber;
+
+        _authorRepository.Add(author);
     }
 }

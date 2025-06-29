@@ -4,6 +4,10 @@ public interface IAuthorRepository
 {
     void Add(Author author);
     void Update(Author author);
+    void Delete(int id);
+    Author? FindById(int id);
+    List<GetAuthorDto> GetAll();
+
 }
 
 
@@ -20,6 +24,30 @@ public class AuthorRepository : IAuthorRepository
     {
         Context.Authors.Add(author);
         Context.SaveChanges();
+    }
+
+    public void Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Author? FindById(int id)
+    {
+        return Context.Authors.Find(id);
+    }
+
+    public List<GetAuthorDto> GetAll()
+    {
+        return Context.Authors.Select(x => new GetAuthorDto
+        {
+            Id = x.Id,
+            Name = x.Name,
+            Family=x.Family,
+            Address = x.ContactInfo.Address,
+            PhoneNumber = x.ContactInfo.PhoneNumber,
+            LicenseNumber = x.LicenseNumber,
+            Birthday = x.Birthday,
+        }).ToList();
     }
 
     public void Update(Author author)

@@ -1,5 +1,4 @@
-﻿using LibraryApi.Models.ContactInfos;
-using LibraryApi.Models.Persons;
+﻿using LibraryApi.Models.Persons;
 
 namespace LibraryApi.Models.Authors;
 

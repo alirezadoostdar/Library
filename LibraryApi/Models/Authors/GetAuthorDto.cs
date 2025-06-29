@@ -1,7 +1,8 @@
 ﻿namespace LibraryApi.Models.Authors;
 
-public class AddAuthorDto
+public class GetAuthorDto
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Family { get; set; }
     public int LicenseNumber { get; set; }

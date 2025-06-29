@@ -20,7 +20,6 @@ namespace LibraryApi.Controllers
             var book = new Book
             {
                 Title = dto.Title,
-                Author = dto.Author,
                 Code = dto.Code,
                 CategoryId = dto.CategoryId,
             };
@@ -40,7 +39,6 @@ namespace LibraryApi.Controllers
             if (book != null)
             {
                 book.Title = dto.Title;
-                book.Author = dto.Author;
                 book.Code = dto.Code;
                 book.CategoryId = dto.CategoryId;
                 _bookRepository.Update(book);
@@ -76,7 +74,6 @@ namespace LibraryApi.Controllers
             {
                 Id = book.Id,
                 Tilte = book.Title,
-                Author = book.Author,
                 Code = book.Code,
                 AgeGroup = book.Category.AgeGroup.Title,
                 Category = book.Category.Title,
