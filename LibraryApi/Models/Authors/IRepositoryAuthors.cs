@@ -28,7 +28,8 @@ public class AuthorRepository : IAuthorRepository
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        Context.Authors.Remove(FindById(id));
+        Context.SaveChanges();
     }
 
     public Author? FindById(int id)

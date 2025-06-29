@@ -72,4 +72,10 @@ public class AuthorsController : Controller
         author.ContactInfo.PhoneNumber = dto.PhoneNumber;
         _authorRepository.Update(author);
     }
+
+    [HttpDelete("{id:int}")]
+    public void Delete(int id)
+    {
+        _authorRepository.Delete(id);
+    }
 }
