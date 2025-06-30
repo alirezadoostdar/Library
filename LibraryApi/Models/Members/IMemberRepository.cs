@@ -4,8 +4,8 @@ namespace LibraryApi.Models.Members;
 
 public interface IMemberRepository
 {
-    void Add(AddMemberDto dto);
-    void Update(AddMemberDto dto);
+    void Add(Member member);
+    void Update(Member member);
     void Delete(int id);
     Member? GetById(int id);
     List<GetMemberDto> GetAll();
@@ -19,20 +19,8 @@ public class MemberRepository : IMemberRepository
         _context = context;
     }
 
-    public void Add(AddMemberDto dto)
+    public void Add(Member member)
     {
-        var member = new Member
-        {
-            Name = dto.Name,
-            Family = dto.Family,
-            MembershipNumber = dto.MembershipNumber,
-            MembershipDate = dto.MembershipDate,
-            ContactInfo = new ContactInfo
-            {
-                Address = dto.Address,
-                PhoneNumber = dto.PhoneNumber,
-            }
-        };
         _context.Members.Add(member);
         _context.SaveChanges();
     }
@@ -61,8 +49,9 @@ public class MemberRepository : IMemberRepository
         return _context.Members.Find(id);
     }
 
-    public void Update(AddMemberDto dto)
+    public void Update(Member member)
     {
-        throw new NotImplementedException();
+        _context.Members.Update(member);
+        _context.SaveChanges();
     }
 }

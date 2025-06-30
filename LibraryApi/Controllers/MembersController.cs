@@ -1,4 +1,5 @@
 ﻿using LibraryApi.Models.Members;
+using LibraryApi.Models.Persons;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryApi.Controllers
@@ -38,16 +39,43 @@ namespace LibraryApi.Controllers
             return _memberRepository.GetAll();
         }
 
-        [HttpPut]
+        [HttpPost]
         public void Add(AddMemberDto dto)
         {
-            _memberRepository.Add(dto);
+            var member = new Member
+            {
+                Name = dto.Name,
+                Family = dto.Family,
+                MembershipNumber = dto.MembershipNumber,
+                MembershipDate = dto.MembershipDate,
+                ContactInfo = new ContactInfo
+                {
+                    Address = dto.Address,
+                    PhoneNumber = dto.PhoneNumber,
+                }
+            };
+            _memberRepository.Add(member);
         }
 
         [HttpDelete("{id:int}")]
         public void Delete(int id)
         {
             _memberRepository.Delete(id);
+        }
+
+        [HttpPut("{id:int}")]
+        public void Update(int id,  UpdateMemberDto dto)
+        {
+            var member = _memberRepository.GetById(id);
+            if (member == null)
+                throw new Exception("member not found");
+            member.Name = dto.Name;
+            member.Family = dto.Family;
+            member.MembershipNumber = dto.MembershipNumber;
+            member.MembershipDate = dto.MembershipDate;
+            member.ContactInfo.PhoneNumber = dto.PhoneNumber;
+            member.ContactInfo.Address = dto.Address;
+            _memberRepository.Update(member);
         }
 
     }
