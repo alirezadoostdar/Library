@@ -2,6 +2,7 @@
 using LibraryApi.Models.Authors;
 using LibraryApi.Models.Books;
 using LibraryApi.Models.Categories;
+using LibraryApi.Models.Members;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApi.Models;
@@ -27,4 +28,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<Book> Books{ get; set; }
     public DbSet<AgeGroup> AgeGroups { get; set; }
     public DbSet<Author> Authors { get; set; }
+    public DbSet<Member> Members { get; set; }
 }

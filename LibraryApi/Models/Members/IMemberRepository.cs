@@ -7,7 +7,7 @@ public interface IMemberRepository
     void Add(AddMemberDto dto);
     void Update(AddMemberDto dto);
     void Delete(int id);
-    Member GetById(int id);
+    Member? GetById(int id);
     List<GetMemberDto> GetAll();
 }
 public class MemberRepository : IMemberRepository
@@ -33,7 +33,7 @@ public class MemberRepository : IMemberRepository
                 PhoneNumber = dto.PhoneNumber,
             }
         };
-        _context.Add(member);
+        _context.Members.Add(member);
         _context.SaveChanges();
     }
 
@@ -44,12 +44,19 @@ public class MemberRepository : IMemberRepository
 
     public List<GetMemberDto> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Members.Select(x => new GetMemberDto(
+            x.Id,
+            x.Name,
+            x.Family,
+            x.ContactInfo.Address,
+            x.ContactInfo.PhoneNumber,
+            x.MembershipNumber,
+            x.MembershipDate)).ToList();
     }
 
-    public Member GetById(int id)
+    public Member? GetById(int id)
     {
-        throw new NotImplementedException();
+        return _context.Members.Find(id);
     }
 
     public void Update(AddMemberDto dto)
