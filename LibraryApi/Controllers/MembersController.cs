@@ -43,5 +43,12 @@ namespace LibraryApi.Controllers
         {
             _memberRepository.Add(dto);
         }
+
+        [HttpDelete("{id:int}")]
+        public void Delete(int id)
+        {
+            _memberRepository.Delete(id);
+        }
+
     }
 }

@@ -39,7 +39,9 @@ public class MemberRepository : IMemberRepository
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        var member = GetById(id);
+        _context.Members.Remove(member);
+        _context.SaveChanges();
     }
 
     public List<GetMemberDto> GetAll()
