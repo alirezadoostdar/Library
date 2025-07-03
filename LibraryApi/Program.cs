@@ -1,5 +1,6 @@
 using LibraryApi.Models;
 using LibraryApi.Models.Authors;
+using LibraryApi.Models.BookLoans;
 using LibraryApi.Models.Books;
 using LibraryApi.Models.Categories;
 using LibraryApi.Models.Members;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();  
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();  
 builder.Services.AddScoped<IMemberRepository, MemberRepository>();  
+builder.Services.AddScoped<IBookLoansRepository, BookLoansRepository>();  
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

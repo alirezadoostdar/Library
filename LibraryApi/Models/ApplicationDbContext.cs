@@ -1,5 +1,6 @@
 ﻿using LibraryApi.Models.Agegroups;
 using LibraryApi.Models.Authors;
+using LibraryApi.Models.BookLoans;
 using LibraryApi.Models.Books;
 using LibraryApi.Models.Categories;
 using LibraryApi.Models.Members;
@@ -29,4 +30,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<AgeGroup> AgeGroups { get; set; }
     public DbSet<Author> Authors { get; set; }
     public DbSet<Member> Members { get; set; }
+    public DbSet<BookLoan> BookLoans { get; set; }
 }
