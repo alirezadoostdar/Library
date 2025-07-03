@@ -1,4 +1,6 @@
-﻿namespace LibraryApi.Models.BookLoans;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace LibraryApi.Models.BookLoans;
 
 
 public interface IBookLoansRepository
@@ -6,7 +8,7 @@ public interface IBookLoansRepository
     void Add(BookLoan bookLoans);
     void Update(BookLoan bookLoans);
     void Delete(int id);
-    BookLoan Get(int id);
+    BookLoan? GetById(int id);
 }
 public class BookLoansRepository : IBookLoansRepository
 {
@@ -28,9 +30,12 @@ public class BookLoansRepository : IBookLoansRepository
         throw new NotImplementedException();
     }
 
-    public BookLoan Get(int id)
+    public BookLoan? GetById(int id)
     {
-        throw new NotImplementedException();
+        return _context.BookLoans
+            .Include(x => x.Member)
+            .Include(x => x.Book)
+            .FirstOrDefault(x => x.Id == id);
     }
 
     public void Update(BookLoan bookLoans)

@@ -12,5 +12,9 @@ public class BookLoansConfig : IEntityTypeConfiguration<BookLoan>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.RegisterDate).IsRequired();
+
+        //builder.HasOne(x => x.Member)
+        //    .WithMany()
+        //    .HasForeignKey(x => x.MemberId);
     }
 }

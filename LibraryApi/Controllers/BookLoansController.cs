@@ -14,6 +14,21 @@ public class BookLoansController : Controller
         _bookLoansRepository = bookLoansRepository;
     }
 
+    [HttpGet("{id:int}")]
+    public GetBookLoansDto GetById(int id)
+    {
+        var bookLoan = _bookLoansRepository.GetById(id);
+        var getBookLoanDto = new GetBookLoansDto
+        {
+            Id = bookLoan.Id,
+            RegisterDate = bookLoan.RegisterDate,
+            MustReturnDate = bookLoan.MustReturnDate,
+            ReturnDate = bookLoan.ReturnDate,
+        };
+
+        return getBookLoanDto;
+    }
+
     [HttpPost]
     public void Add(AddBookLoanDto dto)
     {
