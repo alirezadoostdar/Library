@@ -45,4 +45,14 @@ public class BookLoansController : Controller
     {
         _bookLoansRepository.Delete(id);
     }
+
+    [HttpPut("{id:int}")]
+    public void Update(int id, UpdateBookLoanDto dto)
+    {
+        var bookLoan = _bookLoansRepository.GetById(id);
+        bookLoan.MustReturnDate = dto.MustReturnDate;
+        bookLoan.MemberId = dto.MemberId;
+        bookLoan.BookId = dto.BookId;
+        _bookLoansRepository.Update(bookLoan);
+    }
 }

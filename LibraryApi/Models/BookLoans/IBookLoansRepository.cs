@@ -41,6 +41,7 @@ public class BookLoansRepository : IBookLoansRepository
 
     public void Update(BookLoan bookLoans)
     {
-        throw new NotImplementedException();
+        _context.BookLoans.Update(bookLoans);
+        _context.SaveChanges();
     }
 }
