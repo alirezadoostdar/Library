@@ -27,7 +27,8 @@ public class BookLoansRepository : IBookLoansRepository
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        var bookLoan = _context.BookLoans.Find(id);
+        _context.BookLoans.Remove(bookLoan);
     }
 
     public BookLoan? GetById(int id)

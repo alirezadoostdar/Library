@@ -35,9 +35,14 @@ public class BookLoansController : Controller
         var member = new BookLoan();
         member.RegisterDate = DateTime.UtcNow;
         member.MustReturnDate = DateTime.UtcNow;
-        member.ReturnDate = DateTime.UtcNow;
         member.BookId = dto.BookId;
         member.MemberId = dto.MemberId;
         _bookLoansRepository.Add(member);
+    }
+
+    [HttpDelete("{id:int}")]
+    public void Delete(int id)
+    {
+        _bookLoansRepository.Delete(id);
     }
 }
