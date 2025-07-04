@@ -1,4 +1,6 @@
-﻿namespace LibraryApi.Models.Authors;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace LibraryApi.Models.Authors;
 
 public interface IAuthorRepository
 {
@@ -34,7 +36,8 @@ public class AuthorRepository : IAuthorRepository
 
     public Author? FindById(int id)
     {
-        return Context.Authors.Find(id);
+        return Context.Authors
+            .Include(x => x.Books).FirstOrDefault(x => x.Id == id);
     }
 
     public List<GetAuthorDto> GetAll()
