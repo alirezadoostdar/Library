@@ -17,6 +17,9 @@ public class Invoice
 public class InvoiceDetil
 {
     public int Id { get; set; }
+
+    public int InvoiceId { get; set; }
+    
     public int BookId { get; set; }
     public Book Book { get; set; }
 
@@ -26,9 +29,9 @@ public class InvoiceDetil
 
 public enum InvoiceType
 {
-    Sell = 1,
-    Buy = 2,
-    SellReturn = 3,
-    BuyReturn = 4
+    Sales = 1,
+    Purchase = 2,
+    SalesReturn = 3,
+    PurchaseReturn = 4
 }
 
