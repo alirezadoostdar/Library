@@ -55,4 +55,13 @@ public class BookLoansController : Controller
         bookLoan.BookId = dto.BookId;
         _bookLoansRepository.Update(bookLoan);
     }
+
+    [HttpPatch("{id:int}/return-date")]
+    public void UpdateReturnDate(int id, UpdateReturnDateBookLoanDto dto)
+    {
+        var bookLoan = _bookLoansRepository.GetById(id);
+        bookLoan.ReturnDate = dto.ReturnDate;
+        _bookLoansRepository.Update(bookLoan);
+
+    }
 }
