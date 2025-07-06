@@ -14,7 +14,7 @@ public class Invoice
     public HashSet<InvoiceDetil> Items { get; set; }
 }
 
-public class InvoiceDetil
+public class InvoiceItems
 {
     public int Id { get; set; }
 
@@ -25,6 +25,8 @@ public class InvoiceDetil
 
     public decimal Quantity { get; set; }
     public decimal Price { get; set; }
+
+    public Invoice Invoice { get; set; } = null;
 }
 
 public enum InvoiceType

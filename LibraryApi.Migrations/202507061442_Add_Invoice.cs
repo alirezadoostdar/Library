@@ -53,18 +53,19 @@ public class _202507061442_Add_Invoice : Migration
             .FromTable("InvoiceDetails")
             .ForeignColumn("BookId")
             .ToTable("Books")
-            .PrimaryColumn("Id");
+            .PrimaryColumn("Id")
+            .OnDelete(System.Data.Rule.Cascade);
     }
     public override void Down()
     {
         Delete.ForeignKey("Fk_InvoiceDetail_Invoice");
-        Delete.ForeignKey("Fk_InvoiceDetail_BooK");
-        Delete.ForeignKey("Fk_Invoice_Member");
-        Delete.ForeignKey("Fk_Invoice_Type");
+        //Delete.ForeignKey("Fk_InvoiceDetail_BooK");
+        //Delete.ForeignKey("Fk_Invoice_Member");
+        //Delete.ForeignKey("Fk_Invoice_Type");
 
-        Delete.Table("InvoiceDetails");
-        Delete.Table("InvoiceTypes");
-        Delete.Table("Invoices");
+        //Delete.Table("InvoiceDetails");
+        //Delete.Table("InvoiceTypes");
+        //Delete.Table("Invoices");
     }
 
 }
