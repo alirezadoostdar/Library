@@ -11,7 +11,7 @@ public class Invoice
     public Member Member { get; set; }
     public byte Sign { get; set; }
     public InvoiceType Type { get; set; }
-    public HashSet<InvoiceDetil> Items { get; set; }
+    public HashSet<InvoiceItems> Items { get; set; }
 }
 
 public class InvoiceItems

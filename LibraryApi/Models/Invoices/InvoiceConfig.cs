@@ -21,3 +21,15 @@ public class InvoiceConfig : IEntityTypeConfiguration<Invoice>
             .OnDelete(DeleteBehavior.Cascade);         
     }
 }
+
+public class InvoiceItemsConfig : IEntityTypeConfiguration<InvoiceItems>
+{
+    public void Configure(EntityTypeBuilder<InvoiceItems> builder)
+    {
+        builder.ToTable("InvoiceDetails");
+        builder.HasKey(x =>x.Id);
+        builder.Property(x => x.Quantity).IsRequired();
+        builder.Property(x => x.Price).IsRequired();
+        builder.Property(x => x.BookId).IsRequired();
+    }
+}
