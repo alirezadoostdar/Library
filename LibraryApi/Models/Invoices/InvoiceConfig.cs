@@ -28,8 +28,8 @@ public class InvoiceItemsConfig : IEntityTypeConfiguration<InvoiceItems>
     {
         builder.ToTable("InvoiceDetails");
         builder.HasKey(x =>x.Id);
-        builder.Property(x => x.Quantity).IsRequired();
-        builder.Property(x => x.Price).IsRequired();
+        builder.Property(x => x.Quantity).HasColumnType("decimal(19,5)").IsRequired();
+        builder.Property(x => x.Price).HasColumnType("decimal(19,5)").IsRequired();
         builder.Property(x => x.BookId).IsRequired();
     }
 }

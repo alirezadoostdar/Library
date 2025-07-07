@@ -3,6 +3,7 @@ using LibraryApi.Models.Authors;
 using LibraryApi.Models.BookLoans;
 using LibraryApi.Models.Books;
 using LibraryApi.Models.Categories;
+using LibraryApi.Models.Invoices;
 using LibraryApi.Models.Members;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,4 +32,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Author> Authors { get; set; }
     public DbSet<Member> Members { get; set; }
     public DbSet<BookLoan> BookLoans { get; set; }
+    public DbSet<Invoice> Invoices { get; set; }
+    public DbSet<InvoiceItems> InvoiceItems { get; set; }
 }

@@ -9,9 +9,9 @@ public class Invoice
     public DateTime Date { get; set; }
     public int MemberId { get; set; }
     public Member Member { get; set; }
-    public byte Sign { get; set; }
+    public int Sign { get; set; }
     public InvoiceType Type { get; set; }
-    public HashSet<InvoiceItems> Items { get; set; }
+    public ICollection<InvoiceItems> Items { get; set; } = new List<InvoiceItems>();
 }
 
 public class InvoiceItems

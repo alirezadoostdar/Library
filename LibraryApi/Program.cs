@@ -3,6 +3,7 @@ using LibraryApi.Models.Authors;
 using LibraryApi.Models.BookLoans;
 using LibraryApi.Models.Books;
 using LibraryApi.Models.Categories;
+using LibraryApi.Models.Invoices;
 using LibraryApi.Models.Members;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,7 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();  
 builder.Services.AddScoped<IMemberRepository, MemberRepository>();  
 builder.Services.AddScoped<IBookLoansRepository, BookLoansRepository>();  
+builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();  
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

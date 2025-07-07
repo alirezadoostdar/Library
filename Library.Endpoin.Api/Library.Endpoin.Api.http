@@ -1,0 +1,6 @@
+@Library.Endpoin.Api_HostAddress = http://localhost:5213
+
+GET {{Library.Endpoin.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
