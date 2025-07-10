@@ -31,3 +31,9 @@ public class GetCategoryDto
     public string Title { get; set; }
 
 }
+
+public class AddCategoryDto
+{
+    public string Title { get; set; }
+
+}
