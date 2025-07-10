@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryApi.Migrations", "Li
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{01472A08-5684-462F-835B-506128AC5A44}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7C0E6B2E-4715-402F-B65F-71670CC1F8CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Domain", "src\Library.Domain\Library.Domain.csproj", "{55D99E1A-3ABF-4A06-AC73-4873ECBB465D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,9 +33,17 @@ Global
 		{A5ACFA06-D9FC-45AB-A635-FAFB174999D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5ACFA06-D9FC-45AB-A635-FAFB174999D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5ACFA06-D9FC-45AB-A635-FAFB174999D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D99E1A-3ABF-4A06-AC73-4873ECBB465D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D99E1A-3ABF-4A06-AC73-4873ECBB465D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D99E1A-3ABF-4A06-AC73-4873ECBB465D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D99E1A-3ABF-4A06-AC73-4873ECBB465D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7C0E6B2E-4715-402F-B65F-71670CC1F8CD} = {01472A08-5684-462F-835B-506128AC5A44}
+		{55D99E1A-3ABF-4A06-AC73-4873ECBB465D} = {7C0E6B2E-4715-402F-B65F-71670CC1F8CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D7931151-A0F2-40B9-89DE-7B70BB8936B1}
