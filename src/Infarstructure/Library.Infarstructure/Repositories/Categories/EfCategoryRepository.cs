@@ -5,6 +5,13 @@ namespace Library.Infarstructure.Repositories.Categories;
 
 public class EfCategoryRepository : ICategoryRepository
 {
+    private readonly ApplicationDbContext _context;
+
+    public EfCategoryRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
     public Task<Category> AddAsync(Category category)
     {
         throw new NotImplementedException();
