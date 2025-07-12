@@ -5,7 +5,6 @@ namespace Library.Migrations;
 [Migration(202507122240)]
 public class _202507122240_Add_Category : Migration
 {
-
     public override void Up()
     {
         Create.Table("Categories")
