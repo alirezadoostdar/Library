@@ -13,17 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{01472A08-568
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7C0E6B2E-4715-402F-B65F-71670CC1F8CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Application", "src\Core\Library.Application\Library.Application.csproj", "{0E4CFA81-33BF-420D-8695-0E9EB0CB0768}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Application", "src\Core\Library.Application\Library.Application.csproj", "{0E4CFA81-33BF-420D-8695-0E9EB0CB0768}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Domain", "src\Core\Library.Domain\Library.Domain.csproj", "{107A051F-BA36-4E62-A792-1B2CEE4A0EFA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infarstructure", "Infarstructure", "{C7021ABC-68B7-474E-863E-001BFFE4522F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Infarstructure", "src\Infarstructure\Library.Infarstructure\Library.Infarstructure.csproj", "{F7059FE7-C67A-4D68-A894-045D347B668D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Infarstructure", "src\Infarstructure\Library.Infarstructure\Library.Infarstructure.csproj", "{F7059FE7-C67A-4D68-A894-045D347B668D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persentation", "Persentation", "{9924B5D9-F449-422E-BB47-F1BCF1936DD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Api", "src\Pesentation\Library.Api\Library.Api.csproj", "{3ACDE33A-4A44-4AF7-B9CC-D00CD48514B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Api", "src\Pesentation\Library.Api\Library.Api.csproj", "{3ACDE33A-4A44-4AF7-B9CC-D00CD48514B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Migrations", "src\Infarstructure\Library.Migrations\Library.Migrations.csproj", "{D706C203-6ECE-4E56-8880-879D152CBE1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{3ACDE33A-4A44-4AF7-B9CC-D00CD48514B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ACDE33A-4A44-4AF7-B9CC-D00CD48514B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ACDE33A-4A44-4AF7-B9CC-D00CD48514B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D706C203-6ECE-4E56-8880-879D152CBE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D706C203-6ECE-4E56-8880-879D152CBE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D706C203-6ECE-4E56-8880-879D152CBE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D706C203-6ECE-4E56-8880-879D152CBE1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{F7059FE7-C67A-4D68-A894-045D347B668D} = {C7021ABC-68B7-474E-863E-001BFFE4522F}
 		{9924B5D9-F449-422E-BB47-F1BCF1936DD4} = {01472A08-5684-462F-835B-506128AC5A44}
 		{3ACDE33A-4A44-4AF7-B9CC-D00CD48514B6} = {9924B5D9-F449-422E-BB47-F1BCF1936DD4}
+		{D706C203-6ECE-4E56-8880-879D152CBE1D} = {C7021ABC-68B7-474E-863E-001BFFE4522F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D7931151-A0F2-40B9-89DE-7B70BB8936B1}
