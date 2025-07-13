@@ -1,5 +1,6 @@
 ﻿using Library.Domain.Entities;
 using Library.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Infarstructure.Repositories.Categories;
 
@@ -22,9 +23,9 @@ public class EfCategoryRepository : ICategoryRepository
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Category>> GetAllAsync()
+    public async Task<IEnumerable<Category>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Categories.ToListAsync();
     }
 
     public Task<Category> GetByIdAsync(int id)
@@ -32,8 +33,11 @@ public class EfCategoryRepository : ICategoryRepository
         throw new NotImplementedException();
     }
 
-    public Task<Category> UpdateAsync(Category category)
+    public async Task<Category> UpdateAsync(Category category)
     {
-        throw new NotImplementedException();
+        _context.Categories.Update(category);
+        await _context.SaveChangesAsync();
+
+        return await GetByIdAsync(category.Id);
     }
 }

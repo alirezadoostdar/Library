@@ -30,9 +30,16 @@ public class CategoryServices : ICategoryService
         throw new NotImplementedException();
     }
 
-    public Task<GetCategoryDto> GetAllAsync()
+    public async Task<List<GetCategoryDto>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var catgoeries = await _categoryRepository.GetAllAsync();
+        var CategoryList = catgoeries.Select(x => new GetCategoryDto
+        (
+            x.Id,
+            x.Title
+        )).ToList();
+
+        return CategoryList;
     }
 
     public Task<GetCategoryDto> GetByIdAsync(int id)
@@ -40,8 +47,11 @@ public class CategoryServices : ICategoryService
         throw new NotImplementedException();
     }
 
-    public Task UpdateAsync(UpdateCategoryDto dto)
+    public async Task UpdateAsync(UpdateCategoryDto dto)
     {
-        throw new NotImplementedException();
+        var Category = await _categoryRepository.GetByIdAsync(dto.Id);
+        Category.Title = dto.Title;
+
+        await _categoryRepository.UpdateAsync(Category);
     }
 }

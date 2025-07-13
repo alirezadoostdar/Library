@@ -1,10 +1,9 @@
+using Library.Application.Interfaces;
+using Library.Application.Services;
 using LibraryApi.Models;
-using LibraryApi.Models.Authors;
-using LibraryApi.Models.BookLoans;
 using LibraryApi.Models.Books;
 using LibraryApi.Models.Categories;
-using LibraryApi.Models.Invoices;
-using LibraryApi.Models.Members;
+
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,11 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnectionString"));
 });
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();  
-builder.Services.AddScoped<IBookRepository, BookRepository>();  
-builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();  
-builder.Services.AddScoped<IMemberRepository, MemberRepository>();  
-builder.Services.AddScoped<IBookLoansRepository, BookLoansRepository>();  
-builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();  
+builder.Services.AddScoped<ICategoryService, CategoryServices>();  
+  
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
