@@ -1,6 +1,4 @@
-﻿using Library.Domain.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-
+﻿using Microsoft.AspNetCore.Mvc;
 using Library.Application.Interfaces;
 using Library.Application.Dtos.Categories;
 

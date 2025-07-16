@@ -1,5 +1,3 @@
-using Library.Application.Interfaces;
-using Library.Application.Services;
 using LibraryApi.Models;
 using LibraryApi.Models.Books;
 using LibraryApi.Models.Categories;
@@ -18,8 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnectionString"));
 });
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();  
-builder.Services.AddScoped<ICategoryService, CategoryServices>();  
+ 
   
 var app = builder.Build();
 

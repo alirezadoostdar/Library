@@ -5,6 +5,7 @@ using Library.Infarstructure.Repositories;
 using Library.Infarstructure;
 using Microsoft.EntityFrameworkCore;
 using Library.Infarstructure.Repositories.Categories;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 });
 
 builder.Services.AddScoped<ICategoryRepository, EfCategoryRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryServices>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
 var app = builder.Build();
 
