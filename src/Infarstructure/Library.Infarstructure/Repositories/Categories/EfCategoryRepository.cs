@@ -13,14 +13,18 @@ public class EfCategoryRepository : ICategoryRepository
         _context = context;
     }
 
-    public Task<Category> AddAsync(Category category)
+    public async Task<Category> AddAsync(Category category)
     {
-        throw new NotImplementedException();
+        await _context.Categories.AddAsync(category);
+        await _context.SaveChangesAsync();
+        return category;
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var category = _context.Categories.FirstOrDefault(c => c.Id == id);
+        _context.Categories.Remove(category);
+        await _context.SaveChangesAsync();
     }
 
     public async Task<IEnumerable<Category>> GetAllAsync()

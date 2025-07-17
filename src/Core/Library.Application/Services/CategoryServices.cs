@@ -25,9 +25,9 @@ public class CategoryService : ICategoryService
         return category.Id;
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        await _categoryRepository.DeleteAsync(id);
     }
 
     public async Task<List<GetCategoryDto>> GetAllAsync()
