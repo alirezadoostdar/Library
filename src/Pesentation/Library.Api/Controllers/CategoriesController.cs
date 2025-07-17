@@ -34,4 +34,11 @@ public class CategoriesController : Controller
         var result = await _categoryService.AddAsync(dto);
         return Ok(result);
     }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> UpadateAsync(int id, UpdateCategoryDto dto)
+    {
+        await _categoryService.UpdateAsync(id, dto);
+        return Ok();
+    }
 }

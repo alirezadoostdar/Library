@@ -47,7 +47,7 @@ public class CategoryService : ICategoryService
         throw new NotImplementedException();
     }
 
-    public async Task UpdateAsync(UpdateCategoryDto dto)
+    public async Task UpdateAsync(int id, UpdateCategoryDto dto)
     {
         var Category = await _categoryRepository.GetByIdAsync(dto.Id);
         Category.Title = dto.Title;

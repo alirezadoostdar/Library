@@ -7,9 +7,5 @@ namespace Library.Api.Controllers;
 [Route("api/books")]
 public class BooksController : Controller
 {
-    private readonly 
-    public IActionResult Index()
-    {
-        return View();
-    }
+ 
 }
