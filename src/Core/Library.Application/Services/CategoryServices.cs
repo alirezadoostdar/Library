@@ -42,9 +42,19 @@ public class CategoryService : ICategoryService
         return CategoryList;
     }
 
-    public Task<GetCategoryDto> GetByIdAsync(int id)
+    public async Task<GetCategoryDto> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var category = await _categoryRepository.GetByIdAsync(id);
+        if (category is null)
+            throw new FileNotFoundException();
+
+        var dto = new GetCategoryDto
+            (
+            category.Id,
+            category.Title
+            );
+
+        return dto;
     }
 
     public async Task UpdateAsync(int id, UpdateCategoryDto dto)

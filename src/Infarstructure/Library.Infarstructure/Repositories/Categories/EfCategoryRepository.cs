@@ -32,9 +32,9 @@ public class EfCategoryRepository : ICategoryRepository
         return await _context.Categories.ToListAsync();
     }
 
-    public Task<Category> GetByIdAsync(int id)
+    public async Task<Category> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Categories.FindAsync(id);
     }
 
     public async Task<Category> UpdateAsync(Category category)
