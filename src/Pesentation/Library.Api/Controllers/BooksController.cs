@@ -36,4 +36,12 @@ public class BooksController : Controller
         var list = await _bookService.GetAllAsync();
         return Ok(list);
     }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> DeleteAsync(int id)
+    {
+        await _bookService.DeleteAsync(id);
+        return Ok();
+    }
+
 }

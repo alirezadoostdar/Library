@@ -27,9 +27,15 @@ public class BookService : IBookService
         return result.Id;
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var book = await _repository.GetByIdAsync(id);
+        if (book is null)
+        {
+            // throw exception
+        }
+
+        await _repository.DeleteAsync(id);
     }
 
     public async Task<List<GetBookDto>> GetAllAsync()
