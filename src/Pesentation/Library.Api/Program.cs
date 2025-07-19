@@ -6,6 +6,7 @@ using Library.Infarstructure;
 using Microsoft.EntityFrameworkCore;
 using Library.Infarstructure.Repositories.Categories;
 using System.Data;
+using Library.Infarstructure.Repositories.Books;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +22,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 });
 
 builder.Services.AddScoped<ICategoryRepository, EfCategoryRepository>();
+builder.Services.AddScoped<IBookRepository, EfBookRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 
 var app = builder.Build();
