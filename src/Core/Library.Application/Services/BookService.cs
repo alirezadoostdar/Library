@@ -67,8 +67,16 @@ public class BookService : IBookService
         return bookDto;
     }
 
-    public Task UpdateAsync(int id, UpdateBookDto dto)
+    public async Task UpdateAsync(int id, UpdateBookDto dto)
     {
-        throw new NotImplementedException();
+        var book = await _repository.GetByIdAsync(id);
+        if (book is null)
+            throw new KeyNotFoundException("book not found");
+
+        book.Title = dto.Title;
+        book.Description = dto.Description;
+        book.CategoryId = dto.CategoryId;
+
+        await _repository.UpdateAsync(book);
     }
 }

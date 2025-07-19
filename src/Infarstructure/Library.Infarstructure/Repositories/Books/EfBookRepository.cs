@@ -44,8 +44,10 @@ public class EfBookRepository : IBookRepository
         return book;
     }
 
-    public Task<Book> UpdateAsync(Book book)
+    public async Task<Book> UpdateAsync(Book book)
     {
-        throw new NotImplementedException();
+       _context.Books.Update(book);
+        await _context.SaveChangesAsync();
+        return book;
     }
 }

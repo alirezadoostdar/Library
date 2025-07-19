@@ -44,4 +44,11 @@ public class BooksController : Controller
         return Ok();
     }
 
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> UpdateAsync(int id, UpdateBookDto dto)
+    {
+         await _bookService.UpdateAsync(id, dto);
+        return Ok();
+    }
+
 }
