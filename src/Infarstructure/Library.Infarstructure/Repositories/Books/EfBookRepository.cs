@@ -1,5 +1,6 @@
 ﻿using Library.Domain.Entities;
 using Library.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Infarstructure.Repositories.Books;
 
@@ -29,9 +30,13 @@ public class EfBookRepository : IBookRepository
         throw new NotImplementedException();
     }
 
-    public Task<Book> GetByIdAsync(int id)
+    public async Task<Book> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var book = await _context.Books.
+            Include(x => x.Category)
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        return book;
     }
 
     public Task<Book> UpdateAsync(Book book)

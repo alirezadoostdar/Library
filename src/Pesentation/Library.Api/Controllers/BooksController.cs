@@ -22,4 +22,11 @@ public class BooksController : Controller
         var result = await _bookService.AddAsync(dto);
         return Ok(result);
     }
+
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult> GetById(int id)
+    {
+        var bookDto = await _bookService.GetByIdAsync(id);
+        return Ok(bookDto);
+    }
 }

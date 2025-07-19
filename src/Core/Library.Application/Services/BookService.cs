@@ -1,4 +1,5 @@
 ﻿using Library.Application.Dtos.Books;
+using Library.Application.Dtos.Categories;
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
 using Library.Domain.Interfaces;
@@ -36,9 +37,20 @@ public class BookService : IBookService
         throw new NotImplementedException();
     }
 
-    public Task<GetBookDto> GetByIdAsync(int id)
+    public async Task<GetBookDto> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var book = await _repository.GetByIdAsync(id);
+        if (book is null)
+            throw new KeyNotFoundException();
+
+        var bookDto = new GetBookDto(
+            book.Id,
+            book.Title,
+            book.Description,
+            new GetCategoryDto(book.Category.Id, book.Category.Title)
+            );
+
+        return bookDto;
     }
 
     public Task UpdateAsync(int id, UpdateBookDto dto)
