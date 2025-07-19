@@ -29,4 +29,11 @@ public class BooksController : Controller
         var bookDto = await _bookService.GetByIdAsync(id);
         return Ok(bookDto);
     }
+
+    [HttpGet]
+    public async Task<ActionResult> GetAllAsync()
+    {
+        var list = await _bookService.GetAllAsync();
+        return Ok(list);
+    }
 }

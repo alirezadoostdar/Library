@@ -25,9 +25,12 @@ public class EfBookRepository : IBookRepository
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Book>> GetAllAsync()
+    public async Task<IEnumerable<Book>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var list = await _context.Books
+            .Include(x => x.Category)
+            .ToListAsync();
+        return list;
     }
 
     public async Task<Book> GetByIdAsync(int id)

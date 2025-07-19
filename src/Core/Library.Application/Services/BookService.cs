@@ -32,9 +32,17 @@ public class BookService : IBookService
         throw new NotImplementedException();
     }
 
-    public Task<List<GetBookDto>> GetAllAsync()
+    public async Task<List<GetBookDto>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var list = await _repository.GetAllAsync();
+        if(list is null)
+            return new List<GetBookDto>();
+
+        return list.Select(x => new GetBookDto(
+            x.Id,
+            x.Title,
+            x.Description,
+            new GetCategoryDto(x.Category.Id, x.Category.Title))).ToList();
     }
 
     public async Task<GetBookDto> GetByIdAsync(int id)
