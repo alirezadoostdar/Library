@@ -1,4 +1,5 @@
-﻿using Library.Application.Dtos.Categories;
+﻿using Library.Application.Categories.Contracts.Exceptions;
+using Library.Application.Dtos.Categories;
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
 using Library.Domain.Interfaces;
@@ -16,6 +17,10 @@ public class CategoryService : ICategoryService
 
     public async Task<int> AddAsync(AddCategoryDto dto)
     {
+        var isExistsTitle = _categoryRepository.IsExistTitle(dto.Title);
+        if (isExistsTitle)
+            throw new CategoryTitleIsDuplicateExcptions();
+
         Category category = new Category
         {
             Title = dto.Title,

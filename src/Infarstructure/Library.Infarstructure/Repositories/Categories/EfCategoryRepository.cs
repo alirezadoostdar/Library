@@ -37,6 +37,12 @@ public class EfCategoryRepository : ICategoryRepository
         return await _context.Categories.FindAsync(id);
     }
 
+    public bool IsExistTitle(string title)
+    {
+        var result = _context.Categories.Any(c => c.Title == title);
+        return result;
+    }
+
     public async Task<Category> UpdateAsync(Category category)
     {
         _context.Categories.Update(category);
