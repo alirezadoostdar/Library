@@ -40,7 +40,7 @@ public class DapperCategoryRepository : ICategoryRepository
         throw new NotImplementedException();
     }
 
-    public bool IsExistTitle(string title)
+    public bool IsExistTitle(string title, int id = 0)
     {
         throw new NotImplementedException();
     }

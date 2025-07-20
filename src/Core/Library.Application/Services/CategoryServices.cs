@@ -64,6 +64,10 @@ public class CategoryService : ICategoryService
 
     public async Task UpdateAsync(int id, UpdateCategoryDto dto)
     {
+        var isExistsTitle = _categoryRepository.IsExistTitle(dto.Title, dto.Id);
+        if (isExistsTitle)
+            throw new CategoryTitleIsDuplicateExcptions();
+
         var Category = await _categoryRepository.GetByIdAsync(dto.Id);
         Category.Title = dto.Title;
 

@@ -9,5 +9,5 @@ public interface ICategoryRepository
     Task<Category> UpdateAsync(Category category);
     Task DeleteAsync(int id);
     Task<IEnumerable<Category>> GetAllAsync();
-    bool IsExistTitle(string title);
+    bool IsExistTitle(string title, int id = 0);
 }
