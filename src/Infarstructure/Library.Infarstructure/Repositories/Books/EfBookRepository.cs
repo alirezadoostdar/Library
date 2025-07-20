@@ -44,6 +44,15 @@ public class EfBookRepository : IBookRepository
         return book;
     }
 
+    public bool IsExistTitleAndCategory(int categoryId, string title, int id = 0)
+    {
+        var result = _context.Books
+            .Any(x => x.Title == title && 
+            x.CategoryId == categoryId &&
+            x.Id != id);
+        return result;
+    }
+
     public async Task<Book> UpdateAsync(Book book)
     {
        _context.Books.Update(book);

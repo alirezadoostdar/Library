@@ -9,4 +9,5 @@ public interface IBookRepository
     Task<Book> UpdateAsync(Book book);
     Task DeleteAsync(int id);
     Task<IEnumerable<Book>> GetAllAsync();
+    bool IsExistTitleAndCategory(int categoryId, string title, int id = 0);
 }

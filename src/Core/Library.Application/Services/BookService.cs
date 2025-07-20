@@ -1,4 +1,5 @@
-﻿using Library.Application.Dtos.Books;
+﻿using Library.Application.Books.Contracts.Exceptions;
+using Library.Application.Dtos.Books;
 using Library.Application.Dtos.Categories;
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
@@ -17,6 +18,10 @@ public class BookService : IBookService
 
     public async Task<int> AddAsync(AddBookDto dto)
     {
+        var isDuplicateTitleAndCategory = _repository.IsExistTitleAndCategory(dto.CategoryId, dto.Title);
+        if (isDuplicateTitleAndCategory)
+            throw new TitleAndCategoryIdDuplicateException();
+
         var book = new Book
         {
             Title = dto.Title,
@@ -53,6 +58,7 @@ public class BookService : IBookService
 
     public async Task<GetBookDto> GetByIdAsync(int id)
     {
+  
         var book = await _repository.GetByIdAsync(id);
         if (book is null)
             throw new KeyNotFoundException();
@@ -71,7 +77,11 @@ public class BookService : IBookService
     {
         var book = await _repository.GetByIdAsync(id);
         if (book is null)
-            throw new KeyNotFoundException("book not found");
+            throw new BookNotFoundException();
+
+        var isDuplicateTitleAndCategory = _repository.IsExistTitleAndCategory(dto.CategoryId, dto.Title, dto.Id);
+        if (isDuplicateTitleAndCategory)
+            throw new TitleAndCategoryIdDuplicateException();
 
         book.Title = dto.Title;
         book.Description = dto.Description;
